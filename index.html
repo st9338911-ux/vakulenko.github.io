@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тортики & Тістечка</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <input type="radio" name="filter" id="all" checked hidden />
+    <input type="radio" name="filter" id="pie" hidden />
+    <input type="radio" name="filter" id="roll" hidden />
+    <input type="radio" name="filter" id="cheesecake" hidden />
+    <input type="radio" name="filter" id="cake" hidden />
+    <input type="radio" name="filter" id="pastry" hidden />
+
+    <div class="page-wrapper">
+      <header class="main-header">
+        <div class="logo">Тортики <span class="accent">&</span> Тістечка</div>
+      </header>
+
+      <div class="content-container">
+        <aside class="sidebar">
+          <div class="calorie-filter desktop-only">
+            <h3>Калорії у порції</h3>
+            <div class="range-slider">
+              <div class="track"></div>
+              <div class="thumb left"></div>
+              <div class="thumb right"></div>
+            </div>
+            <p>Від 0 до 400 кКал</p>
+          </div>
+
+          <nav class="filter-nav">
+            <label for="pie" class="btn">Пиріг</label>
+            <label for="cheesecake" class="btn">Сирники</label>
+            <label for="roll" class="btn">Рулет</label>
+            <label for="cake" class="btn">Торт</label>
+            <label for="pastry" class="btn">Тістечко</label>
+            <label for="all" class="btn reset">Скинути фільтр</label>
+          </nav>
+        </aside>
+
+        <main class="gallery">
+          <article class="card type-cake">
+            <div class="card-img">
+              <img
+                src="img/Снимок экрана 2025-12-14 234307.png"
+                alt="Торт Сметанковий"
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Торт: <strong>Сметанковий</strong></h3>
+              <div class="card-divider"></div>
+              <p class="card-calories desktop-only">
+                Калорії у порції 265 кКал
+              </p>
+            </div>
+          </article>
+
+          <article class="card type-pastry">
+            <div class="card-img">
+              <img src="img/(2).png" alt="Тістечко Мафін" />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Тістечко: <strong>Мафін</strong></h3>
+              <div class="card-divider"></div>
+              <p class="card-calories desktop-only">
+                Калорії у порції 305 кКал
+              </p>
+            </div>
+          </article>
+
+          <article class="card type-cheesecake">
+            <div class="card-img">
+              <img src="img/(3).png" alt="Сирники Три ягоди" />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Сирники: <strong>Три ягоди</strong></h3>
+              <div class="card-divider"></div>
+              <p class="card-calories desktop-only">
+                Калорії у порції 450 кКал
+              </p>
+            </div>
+          </article>
+
+          <article class="card type-cake">
+            <div class="card-img">
+              <img src="img/(4).png" alt="Торт Смачний" />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Торт: <strong>Смачний</strong></h3>
+              <div class="card-divider"></div>
+              <p class="card-calories desktop-only">
+                Калорії у порції 523 кКал
+              </p>
+            </div>
+          </article>
+
+          <article class="card type-roll">
+            <div class="card-img">
+              <img src="img/(5).png" alt="Рулет Святковий" />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Рулет: <strong>Святковий</strong></h3>
+              <div class="card-divider"></div>
+              <p class="card-calories desktop-only">
+                Калорії у порції 380 кКал
+              </p>
+            </div>
+          </article>
+
+          <article class="card type-pie">
+            <div class="card-img">
+              <img src="img/(6).png" alt="Пиріг Свято у бабусі" />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Пиріг: <strong>Свято у бабусі</strong></h3>
+              <div class="card-divider"></div>
+              <p class="card-calories desktop-only">
+                Калорії у порції 298 кКал
+              </p>
+            </div>
+          </article>
+        </main>
+      </div>
+
+      <footer class="main-footer">
+        <div class="contacts">
+          <p>Контакти:</p>
+          <a href="mailto:tortik@smakota.ua">tortik@smakota.ua</a>
+        </div>
+        <div class="copyright">&copy; 2019 Smakota</div>
+      </footer>
+    </div>
+  </body>
+</html>

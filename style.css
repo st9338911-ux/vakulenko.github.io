@@ -1,0 +1,330 @@
+/* ========================
+   БАЗОВІ СТИЛІ (RESET)
+   ======================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Приховуємо елементи, призначені тільки для Desktop, за замовчуванням */
+.desktop-only {
+  display: none;
+}
+
+/* ========================
+   HEADER
+   ======================== */
+.main-header {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.main-header .accent {
+  color: #ff4757; /* Червоний колір з логотипу */
+  font-size: 2.5rem;
+}
+
+/* ========================
+   MOBILE LAYOUT (Base)
+   ======================== */
+.page-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Контейнер для Контенту */
+.content-container {
+  display: flex;
+  flex-direction: column; /* Вертикальне розташування: спочатку фільтри, потім галерея */
+}
+
+/* Сайдбар (Фільтри) */
+.sidebar {
+  margin-bottom: 20px;
+}
+
+.filter-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  background-color: #e0e0e0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  flex-grow: 1; /* Кнопки розтягуються */
+  text-align: center;
+  transition: background 0.3s;
+  user-select: none;
+}
+
+.btn:hover {
+  background-color: #d6d6d6;
+}
+
+.btn.reset {
+  background-color: #ecf0f1;
+  width: 100%; /* Кнопка скидання на всю ширину в мобільному */
+}
+
+/* Галерея */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 колонка  */
+  gap: 15px;
+}
+
+/* Картка товару */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img {
+  height: 250px; /* Фіксована висота фото */
+}
+
+.card-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Фото обрізається, щоб заповнити площу */
+  object-position: center;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+/* FOOTER */
+.main-footer {
+  margin-top: 30px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #555;
+}
+/* За замовчуванням контакти стовпчиком (Mobile) */
+.main-footer .contacts a {
+  display: block;
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+/* ========================
+   ЛОГІКА ФІЛЬТРАЦІЇ (Ч/Б Ефект) [cite: 124]
+   ======================== */
+/* Якщо обрано "Пиріг", всі картки, що НЕ .type-pie стають ч/б та напівпрозорими */
+#pie:checked ~ .page-wrapper .gallery .card:not(.type-pie),
+#roll:checked ~ .page-wrapper .gallery .card:not(.type-roll),
+#cheesecake:checked ~ .page-wrapper .gallery .card:not(.type-cheesecake),
+#cake:checked ~ .page-wrapper .gallery .card:not(.type-cake),
+#pastry:checked ~ .page-wrapper .gallery .card:not(.type-pastry) {
+  filter: grayscale(100%);
+  opacity: 0.3;
+}
+
+/* Стилізація активної кнопки */
+#pie:checked ~ .page-wrapper .sidebar label[for="pie"],
+#roll:checked ~ .page-wrapper .sidebar label[for="roll"],
+#cheesecake:checked ~ .page-wrapper .sidebar label[for="cheesecake"],
+#cake:checked ~ .page-wrapper .sidebar label[for="cake"],
+#pastry:checked ~ .page-wrapper .sidebar label[for="pastry"] {
+  background-color: #ff4757;
+  color: white;
+}
+
+/* ========================
+   TABLET (730px - 1200px) 
+   ======================== */
+@media (min-width: 730px) {
+  .gallery {
+    /* Макет 2 показує сітку */
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .btn {
+    /* Кнопки більш компактні */
+    flex-grow: 0;
+    width: auto;
+  }
+
+  .btn.reset {
+    width: auto;
+  }
+
+  /* У планшета кнопки вистроєні в ряд по 3 або 4 */
+  .filter-nav {
+    justify-content: space-between;
+  }
+}
+
+/* Якщо екран дозволяє, можна зробити 3 колонки для великих планшетів */
+@media (min-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========================
+   DESKTOP (> 1200px) [cite: 112, 117]
+   ======================== */
+@media (min-width: 1200px) {
+  .desktop-only {
+    display: block; /* Показати приховані елементи */
+  }
+
+  .content-container {
+    /* Зміна напрямку flex: Галерея зліва, Сайдбар справа */
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .gallery {
+    /* Галерея займає 75% ширини (flex-grow) */
+    flex: 3;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sidebar {
+    /* Сайдбар займає 25%, але візуально він справа, тому order */
+    flex: 1;
+    order: 2; /* Переміщуємо сайдбар після галереї */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  /* Стилізація фільтрів для десктопу (вертикальний список) */
+  .filter-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    background-color: #e0e0e0;
+    border: none;
+  }
+
+  /* Вимоги до картки на десктопі [cite: 118-122] */
+  .card {
+    height: 100%; /* Рівна висота */
+    display: flex;
+    flex-direction: row; /* На макеті 3 (Desktop) фото зліва, текст справа? 
+                              Ні, на макеті 117 фото зверху або збоку. 
+                              Дивлячись на Source 117, фото зліва, текст справа для "landscape" карток,
+                              АЛЕ нижче є "вертикальні" картки.
+                              Зазвичай grid робить висоту рівною автоматично.
+                              Зробимо структуру як у Source 117 (фото зліва). */
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  /* На макеті 117 картки виглядають інакше: Фото зліва (маленьке), текст справа.
+       Давайте адаптуємо під цей вигляд */
+  .card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .card-img {
+    width: 120px; /* Фіксована ширина фото */
+    height: 100%;
+    min-height: 120px;
+    flex-shrink: 0;
+  }
+
+  .card-img img {
+    /* [cite: 122] Якщо висота фото менше, вирівнювання по верхньому краю */
+    object-position: top center;
+    height: 100%;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+  }
+
+  /* [cite: 120] Лінія розділення */
+  .card-divider {
+    height: 1px;
+    background-color: #eee;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .card-calories {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: auto; /* Притиснути до низу */
+  }
+
+  /* Макет калорій (візуалізація) [cite: 123] */
+  .range-slider {
+    position: relative;
+    height: 5px;
+    background: #ccc;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  .range-slider .thumb {
+    width: 15px;
+    height: 15px;
+    background: #2c3e50;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+  }
+  .range-slider .thumb.left {
+    left: 10%;
+  }
+  .range-slider .thumb.right {
+    left: 60%;
+  }
+
+  /* Footer на десктопі [cite: 125] */
+  .main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
